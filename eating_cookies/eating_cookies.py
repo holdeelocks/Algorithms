@@ -8,12 +8,9 @@ import sys
 
 
 def eating_cookies(n, cache=[1, 1, 2, 4]):
-    # if n <= len(cache):
-    #     return cache
-
     if not n in range(len(cache)):
         value = eating_cookies(
-            n - 1, cache) + eating_cookies(n - 2, cache) + eating_cookies(n - 3, cache)
+            n - 1) + eating_cookies(n - 2) + eating_cookies(n - 3)
         cache.append(value)
     return cache[n]
 
