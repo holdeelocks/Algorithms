@@ -5,19 +5,19 @@ import sys
 
 def rock_paper_scissors(n):
     options = ['rock', 'paper', 'scissors']
-    # options = [[i] for i in options]
+    options = [[i] for i in options]
     output = []
     if n == 0:
         return [[]]
     if n == 1:
-        return [[i] for i in options]
+        return options
 
     def play_game(num, solutions):
         if num == 0:
             output.append(solutions)
         else:
             for item in options:
-                play_game(num - 1, solutions + [item])
+                play_game(num - 1, solutions + item)
 
     play_game(n, [])
     return output
