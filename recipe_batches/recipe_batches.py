@@ -5,16 +5,12 @@ import math
 
 def recipe_batches(recipe, ingredients):
     curr_min = 100000
-    for item in ingredients:
-        if not item in recipe:
+    for item in recipe:
+        if not item in ingredients or recipe[item] > ingredients[item]:
             return 0
         else:
-            if ingredients[item] < recipe[item]:
-                return 0
-            else:
-                ingredients[item] = recipe[item] // ingredients[item]
-                if ingredients[item] < curr_min:
-                    curr_min = recipe[item]
+            if ingredients[item] // recipe[item] < curr_min:
+                curr_min = ingredients[item] // recipe[item]
 
     return curr_min
 
